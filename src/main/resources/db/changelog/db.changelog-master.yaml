@@ -1,0 +1,4 @@
+databaseChangeLog:
+  - include:
+      file: changes/2024-05-30-products.sql
+      relativeToChangelogFile: true

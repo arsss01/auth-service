@@ -1,0 +1,30 @@
+spring:
+  datasource:
+    url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5433/user-service}
+    username: ${DATASOURCE_USERNAME:postgres}
+    password: ${DATASOURCE_PASSWORD:123}
+    driver-class-name: org.postgresql.Driver
+    testOnBorrow: true
+    validationQuery: SELECT 1
+    hikari:
+      connectTimeout: 30
+      idleTimeout: 600000
+      maxLifetime: 1800000
+      maximum-pool-size: 4
+  profiles:
+    active: ${PROFILES_ACTIVE:default}
+
+  liquibase:
+    contexts: default
+    driver-class-name: org.postgresql.Driver
+    url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5433/user-service}
+    user: ${DATASOURCE_USERNAME:postgres}
+    password: ${DATASOURCE_PASSWORD:123}
+    default-schema: public
+    enabled: true
+    change-log: db/changelog/db.changelog-master.yaml
+
+server:
+  port: ${SERVER_PORT:8080}
+  servlet:
+    context-path: "/api"
