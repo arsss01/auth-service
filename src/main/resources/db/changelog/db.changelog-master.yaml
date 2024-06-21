@@ -1,4 +1,4 @@
 databaseChangeLog:
   - include:
-      file: changes/2024-05-30-products.sql
+      file: changes/2024-06-20-users-table.sql
       relativeToChangelogFile: true

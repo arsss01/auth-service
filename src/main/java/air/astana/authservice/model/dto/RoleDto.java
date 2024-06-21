@@ -1,4 +1,4 @@
-package air.astana.auth_service.model.dto;
+package air.astana.authservice.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package air.astana.auth_service.model.entity;
+package air.astana.authservice.model.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -11,10 +11,10 @@ import lombok.NoArgsConstructor;
 @Entity(name = "roles")
 public class Role {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "roles_id_seq")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "roles_id_seq")
     @SequenceGenerator(name = "roles_id_seq", sequenceName = "roles_id_seq", allocationSize = 1)
     private int id;
     private String code;
-    @ManyToOne
-    private User users;
+    @OneToOne(mappedBy = "role")
+    private User user;
 }

@@ -1,4 +1,4 @@
-package air.astana.auth_service;
+package air.astana.authservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
