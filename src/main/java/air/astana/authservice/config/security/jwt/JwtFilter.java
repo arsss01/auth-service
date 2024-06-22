@@ -1,6 +1,6 @@
 package air.astana.authservice.config.security.jwt;
 
-import air.astana.authservice.model.dto.request.AuthDto;
+import air.astana.authservice.model.dto.UserDto;
 import air.astana.authservice.service.impl.UserService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -31,7 +31,7 @@ public class JwtFilter extends OncePerRequestFilter {
             if (token != null && jwtUtils.validateToken(token)) {
                 String username = jwtUtils.getEmailFromToken(token);
 
-                AuthDto user = userService.getUserByUsername(username);
+                UserDto user = userService.getUserByUsername(username);
                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                         user, null);
 

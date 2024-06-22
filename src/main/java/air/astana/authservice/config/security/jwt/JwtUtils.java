@@ -1,6 +1,6 @@
 package air.astana.authservice.config.security.jwt;
 
-import air.astana.authservice.model.dto.request.AuthDto;
+import air.astana.authservice.model.dto.UserDto;
 import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,11 +23,11 @@ public class JwtUtils {
     @Value("${jwt.jwtExpirationMs}")
     private int jwtExpirationMs;
 
-    public String generateAccessToken(AuthDto userPrincipal) {
+    public String generateAccessToken(UserDto userPrincipal) {
         return generateJwt(userPrincipal, jwtExpirationMs);
     }
 
-    private String generateJwt(AuthDto userPrincipal, int jwtExpirationMs) {
+    private String generateJwt(UserDto userPrincipal, int jwtExpirationMs) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("userId", userPrincipal.getId());
         claims.put("role", userPrincipal.getRole());

@@ -1,14 +1,15 @@
 package air.astana.authservice.model.dto;
 
-import air.astana.authservice.model.RoleCode;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class RoleDto {
+@NoArgsConstructor
+public class UserDto {
     private Integer id;
-    private RoleCode code;
+    private String username;
+    private String password;
+    private RoleDto role;
 }

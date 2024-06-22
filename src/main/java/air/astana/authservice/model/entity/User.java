@@ -16,7 +16,7 @@ public class User {
     private Integer id;
     private String username;
     private String password;
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "role_id", referencedColumnName = "id")
     private Role role;
 }
