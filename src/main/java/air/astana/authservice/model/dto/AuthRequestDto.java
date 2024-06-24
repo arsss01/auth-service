@@ -1,6 +1,7 @@
 package air.astana.authservice.model.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,10 +9,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDto {
-    private Integer id;
+public class AuthRequestDto {
+    @NotNull
+    @NotBlank
     private String username;
-    private RoleDto role;
-    @JsonIgnore
+    @NotNull
+    @NotBlank
     private String password;
 }

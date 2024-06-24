@@ -1,7 +1,7 @@
 package air.astana.authservice.config.security;
 
 import air.astana.authservice.exceptions.ApiError;
-import air.astana.authservice.model.dto.request.AuthDto;
+import air.astana.authservice.model.dto.AuthRequestDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -21,7 +21,7 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
                        AccessDeniedException accessDeniedException) throws IOException {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null) {
-            AuthDto jwtUser = (AuthDto) auth.getPrincipal();
+            AuthRequestDto jwtUser = (AuthRequestDto) auth.getPrincipal();
             log.warn("User: {} attempted to access protected URL: {}", jwtUser.getUsername(), request.getRequestURI());
         }
 

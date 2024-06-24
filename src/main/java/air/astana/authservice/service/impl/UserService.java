@@ -21,7 +21,6 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class UserService implements UserDetailsService {
-
     private final UserRepository userRepository;
     private final PasswordEncoder encoder;
     private final ModelMapper mapper;
@@ -29,22 +28,20 @@ public class UserService implements UserDetailsService {
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        log.info("loading user by username");
-        return (UserDetails) userRepository.findByUsername(username)
-                .orElseThrow(() -> new GlobalException("User not found by username", Map.of("username", username))
-                );
+        log.info("Loading user by username: {}", username);
+        return (UserDetails) getUserByUsername(username);
     }
 
     public UserDto getUserByUsername(String username) {
-        log.info("getting user by username: {}", username);
+        log.info("Getting user by username: {}", username);
         return mapper.map(userRepository.findByUsername(username)
                         .orElseThrow(() -> new GlobalException("User not found by username", Map.of("username", username))),
                 UserDto.class);
     }
 
     public boolean checkCredentials(String username, String password) {
-        log.info("Check process is started");
-        // Получаем зашифрованный пароль из базы данных по имени пользователя
+        log.info("Credentials matching is started");
+
         Optional<User> user = userRepository.findByUsername(username);
         if (user.isEmpty()) {
             log.error("User is not found");

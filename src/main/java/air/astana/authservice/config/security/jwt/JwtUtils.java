@@ -30,7 +30,7 @@ public class JwtUtils {
     private String generateJwt(UserDto userPrincipal, int jwtExpirationMs) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("userId", userPrincipal.getId());
-        claims.put("role", userPrincipal.getRole());
+        claims.put("role", userPrincipal.getRole().getCode());
 
         return Jwts.builder()
                 .setClaims(claims)

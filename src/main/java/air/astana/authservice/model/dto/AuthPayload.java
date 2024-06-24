@@ -1,6 +1,5 @@
-package air.astana.authservice.model.dto.response;
+package air.astana.authservice.model.dto;
 
-import air.astana.authservice.model.dto.RoleDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

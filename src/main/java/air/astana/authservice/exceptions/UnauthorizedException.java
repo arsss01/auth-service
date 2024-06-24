@@ -7,7 +7,6 @@ public class UnauthorizedException extends RuntimeException {
     public UUID exceptionId;
     public Map<String, Object> errorDetails;
 
-
     public UnauthorizedException(String message) {
         super(message);
         this.exceptionId = UUID.randomUUID();

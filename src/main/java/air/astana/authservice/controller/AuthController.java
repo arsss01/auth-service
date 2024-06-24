@@ -1,8 +1,9 @@
 package air.astana.authservice.controller;
 
-import air.astana.authservice.model.dto.request.AuthDto;
+import air.astana.authservice.model.dto.AuthRequestDto;
 import air.astana.authservice.service.AuthService;
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,16 +17,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
     private final AuthService authService;
 
-    @Operation(summary = "Registration for username")
+    @Operation(summary = "User registration with role USER")
     @PostMapping("/signup")
-    public ResponseEntity<?> registerByUsername(@RequestBody AuthDto authDto) {
+    public ResponseEntity<?> registerUser(@RequestBody @Valid AuthRequestDto authDto) {
         authService.registration(authDto);
         return ResponseEntity.ok().build();
     }
 
-    @Operation(summary = "Sign in by username")
+    @Operation(summary = "Sign in by username and password")
     @PostMapping("/login")
-    public ResponseEntity<?> loginByUsername(@RequestBody AuthDto authDto) {
+    public ResponseEntity<?> loginByUsername(@RequestBody @Valid AuthRequestDto authDto) {
         return ResponseEntity.ok(authService.loginByUsername(authDto));
     }
 

@@ -14,8 +14,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "users_id_seq")
     @SequenceGenerator(name = "users_id_seq", sequenceName = "users_id_seq", allocationSize = 1)
     private Integer id;
+
     private String username;
     private String password;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "role_id", referencedColumnName = "id")
     private Role role;

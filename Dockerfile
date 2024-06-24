@@ -6,6 +6,6 @@ RUN mvn clean package -DskipTests
 
 FROM openjdk:17-jdk-slim
 WORKDIR /app
-COPY --from=build /app/target/*.jar my-app.jar
+COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "my-app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]

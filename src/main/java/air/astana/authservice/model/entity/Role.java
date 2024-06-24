@@ -17,12 +17,10 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "roles_id_seq")
     @SequenceGenerator(name = "roles_id_seq", sequenceName = "roles_id_seq", allocationSize = 1)
     private int id;
+
     @Enumerated(EnumType.STRING)
     private RoleCode code;
+
     @OneToMany(mappedBy = "role")
     private List<User> users;
-
-    public Role(RoleCode code) {
-        this.code = code;
-    }
 }
