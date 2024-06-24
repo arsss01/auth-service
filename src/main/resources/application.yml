@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5433/auth-service}
+    url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5430/auth_service_db}
     username: ${DATASOURCE_USERNAME:postgres}
     password: ${DATASOURCE_PASSWORD:123}
     driver-class-name: org.postgresql.Driver
@@ -17,7 +17,7 @@ spring:
   liquibase:
     contexts: default
     driver-class-name: org.postgresql.Driver
-    url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5433/auth-service}
+    url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5430/auth_service_db}
     user: ${DATASOURCE_USERNAME:postgres}
     password: ${DATASOURCE_PASSWORD:123}
     default-schema: public
@@ -29,6 +29,6 @@ jwt:
   jwtExpirationMs: ${JWT_EXPIRATION_MS:3600000} # 60 minutes
 
 server:
-  port: ${SERVER_PORT:8082}
+  port: ${SERVER_PORT:8080}
   servlet:
     context-path: "/api"
